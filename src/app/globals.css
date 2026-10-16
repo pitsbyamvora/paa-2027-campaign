@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --sdp-dark-green: #072e21;
+  --sdp-mid-green: #0b4532;
+  --sdp-emerald: #10724e;
+  --sdp-orange: #ea580c;
+  --sdp-orange-light: #f97316;
+  --sdp-cream: #faf9f6;
+  --sdp-card-bg: #f8faf9;
+  --sdp-border: #e2e8e5;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom smooth transitions and typography accents */
+.bg-sdp-dark {
+  background-color: var(--sdp-dark-green);
+}
+
+.bg-sdp-mid {
+  background-color: var(--sdp-mid-green);
+}
+
+.text-sdp-orange {
+  color: var(--sdp-orange-light);
+}
+
+.bg-sdp-orange {
+  background-color: var(--sdp-orange);
+}
+
+.bg-sdp-orange:hover {
+  background-color: #c2410c;
+}
