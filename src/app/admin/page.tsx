@@ -25,9 +25,10 @@ import {
 export default function AdminDashboardPage() {
   const [passcode, setPasscode] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [activeTab, setActiveTab] = useState<"members" | "surveys">("members");
+  const [activeTab, setActiveTab] = useState<"members" | "surveys" | "messages">("members");
   const [members, setMembers] = useState<any[]>([]);
   const [surveys, setSurveys] = useState<any[]>([]);
+  const [messages, setMessages] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -63,6 +64,14 @@ export default function AdminDashboardPage() {
           .order("created_at", { ascending: false });
 
         if (surveyData) setSurveys(surveyData);
+
+        // Fetch messages
+        const { data: messageData } = await supabase
+          .from("contact_messages")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (messageData) setMessages(messageData);
       } else {
         // Mock sample data if Supabase keys not added yet
         setMembers([
@@ -282,6 +291,17 @@ export default function AdminDashboardPage() {
               <HelpCircle className="w-4 h-4" />
               Citizen Surveys ({surveys.length})
             </button>
+            <button
+              onClick={() => setActiveTab("messages")}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
+                activeTab === "messages"
+                  ? "bg-emerald-950 text-white shadow-xs"
+                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4" />
+              Official Messages ({messages.length})
+            </button>
           </div>
 
           <div className="relative w-full sm:w-72">
@@ -410,6 +430,52 @@ export default function AdminDashboardPage() {
                         </td>
                         <td className="py-3.5 px-4 sm:px-6 text-slate-400 text-[11px]">
                           {new Date(survey.created_at).toLocaleDateString()}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Messages Table */}
+        {activeTab === "messages" && (
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-[#f8faf9] text-slate-500 font-extrabold uppercase tracking-wider border-b border-slate-200">
+                  <tr>
+                    <th className="py-3.5 px-4 sm:px-6">Sender Details</th>
+                    <th className="py-3.5 px-4">Subject</th>
+                    <th className="py-3.5 px-4">Message Body</th>
+                    <th className="py-3.5 px-4 sm:px-6">Received</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {messages.length === 0 ? (
+                    <tr>
+                      <td colSpan={4} className="text-center py-10 text-slate-400">
+                        No official messages received yet.
+                      </td>
+                    </tr>
+                  ) : (
+                    messages.map((msg) => (
+                      <tr key={msg.id} className="hover:bg-slate-50/80 transition-colors">
+                        <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900">
+                          <div>{msg.name}</div>
+                          <div className="text-[11px] text-slate-500 font-normal">{msg.email}</div>
+                          {msg.phone && <div className="text-[10px] text-emerald-800 font-semibold">{msg.phone}</div>}
+                        </td>
+                        <td className="py-3.5 px-4 font-bold text-orange-600">
+                          {msg.subject}
+                        </td>
+                        <td className="py-3.5 px-4 text-slate-700 max-w-md whitespace-pre-wrap">
+                          {msg.message}
+                        </td>
+                        <td className="py-3.5 px-4 sm:px-6 text-slate-400 text-[11px]">
+                          {new Date(msg.created_at).toLocaleDateString()}
                         </td>
                       </tr>
                     ))

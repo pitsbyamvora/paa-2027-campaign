@@ -62,3 +62,30 @@ CREATE POLICY "Allow read on citizen_surveys"
 ON public.citizen_surveys FOR SELECT 
 TO anon, authenticated
 USING (true);
+
+
+-- 3. Table for Official Contact Messages
+CREATE TABLE IF NOT EXISTS public.contact_messages (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    phone TEXT,
+    subject TEXT DEFAULT 'General Inquiry',
+    message TEXT NOT NULL
+);
+
+-- Enable RLS for contact_messages
+ALTER TABLE public.contact_messages ENABLE ROW LEVEL SECURITY;
+
+-- Allow anonymous visitors to submit (Insert)
+CREATE POLICY "Allow public insert to contact_messages" 
+ON public.contact_messages FOR INSERT 
+TO anon, authenticated
+WITH CHECK (true);
+
+-- Allow read on contact_messages for Admin Dashboard
+CREATE POLICY "Allow read on contact_messages" 
+ON public.contact_messages FOR SELECT 
+TO anon, authenticated
+USING (true);
