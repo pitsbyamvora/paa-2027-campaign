@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://paa2027.ng";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://paa-2027-campaign.vercel.app");
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -46,27 +48,28 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_NG",
     url: siteUrl,
-    title: "Prince Adewole Adebayo 2027 — The People's Choice for President",
+    title: "Prince Adewole Adebayo for President | SDP 2027",
     description:
-      "A united, competent and people-focused leadership for a prosperous Nigeria. Explore the 2027–2031 Blueprint: Farewell to Poverty and Insecurity.",
+      "Official 2027 Presidential Ticket: Prince (Dr.) Adewole Adebayo & Dr. Usman Bugaje. The New Nigeria Begins With Us — Farewell to Poverty and Insecurity.",
     siteName: "PAA 2027 Presidential Campaign",
     images: [
       {
-        url: "/images/candidate-bg.png",
+        url: "/images/og-share-card.jpg",
         width: 1200,
-        height: 630,
-        alt: "Prince Adewole Adebayo — Presidential Candidate 2027",
+        height: 675,
+        type: "image/jpeg",
+        alt: "Prince Adewole Adebayo for President & Usman M. Bugaje for Vice President - SDP 2027",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prince Adewole Adebayo 2027 | SDP Presidential Candidate",
+    title: "Prince Adewole Adebayo for President | SDP 2027",
     description:
-      "Official Campaign of Prince Adewole Adebayo. 'The security and welfare of the people shall be the primary purpose of Government.'",
+      "Official 2027 Presidential Ticket: Prince (Dr.) Adewole Adebayo & Dr. Usman Bugaje. The New Nigeria Begins With Us.",
     site: "@Pres_Adebayo",
     creator: "@Pres_Adebayo",
-    images: ["/images/candidate-bg.png"],
+    images: ["/images/og-share-card.jpg"],
   },
   alternates: {
     canonical: "/",
