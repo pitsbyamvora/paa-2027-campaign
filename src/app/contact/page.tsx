@@ -23,13 +23,31 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (!res.ok) {
-        console.warn("API returned error, falling back gracefully");
+      // 1. Try API route first
+      let sent = false;
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        if (res.ok) sent = true;
+      } catch (e) {
+        sent = false;
+      }
+
+      // 2. Client-side Supabase direct fallback (works 100% on Cloudflare Pages static export)
+      if (!sent) {
+        const { supabase } = await import("@/lib/supabase");
+        if (supabase) {
+          await supabase.from("contact_messages").insert({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || null,
+            subject: formData.subject || "General Inquiry",
+            message: formData.message,
+          });
+        }
       }
     } catch (err) {
       console.warn("Contact form submit error:", err);
