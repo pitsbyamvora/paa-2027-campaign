@@ -67,27 +67,34 @@ export default function CampaignHome() {
     <div className="min-h-screen bg-[#fafcfb] text-slate-800 flex flex-col font-sans selection:bg-orange-500 selection:text-white">
       <Navbar />
 
-      {/* 1. HERO SECTION WITH USER UPLOADED BACKGROUND BANNER */}
-      <section className="relative bg-[#041c14] text-white overflow-hidden py-12 sm:py-20 lg:py-24">
-        {/* User supplied banner as ambient watermark background */}
-        <div className="absolute inset-0 pointer-events-none opacity-20 sm:opacity-30 mix-blend-luminosity">
-          <Image
-            src="/images/candidate-bg.png"
-            alt="Prince Adewole Adebayo"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#031d14] via-[#041c14]/90 to-[#06291d]/85 pointer-events-none" />
+      {/* 1. HERO SECTION WITH OFFICIAL PRESIDENTIAL TICKET BANNER */}
+      <section className="relative bg-[#041c14] text-white overflow-hidden py-8 sm:py-14 lg:py-18">
+        {/* Subtle ambient lighting */}
+        <div className="absolute inset-0 bg-radial from-[#0d4f36]/40 via-transparent to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            
+            {/* MOBILE: SHOW IMAGE FIRST (order-1 on mobile, order-2 on lg desktop) */}
+            <div className="order-1 lg:order-2 lg:col-span-6 flex justify-center">
+              <div className="relative w-full max-w-lg lg:max-w-none rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-2 border-emerald-500/30 group">
+                <div className="relative aspect-[16/10] sm:aspect-[16/9.5] w-full">
+                  <Image
+                    src="/images/hero-campaign-banner.jpg"
+                    alt="Prince Adewole Adebayo for President & Dr. Usman Bugaje for Vice President"
+                    fill
+                    priority
+                    className="object-cover object-center group-hover:scale-102 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* WRITE-UPS & CTA BUTTONS (order-2 on mobile, order-1 on lg desktop) */}
+            <div className="order-2 lg:order-1 lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase">
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                A Better Nigeria is Possible
+                The New Nigeria Begins With Us
               </div>
 
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
@@ -98,23 +105,28 @@ export default function CampaignHome() {
                 </span>
               </h1>
 
-              <p className="text-slate-200 text-sm sm:text-base lg:text-lg max-w-xl font-normal leading-relaxed">
-                A united, competent, and people-focused leadership for a prosperous Nigeria.
-                The <strong>Social Democratic Party (SDP)</strong> is here to build a humane, secure, and industrially productive nation that works for everyone.
-              </p>
+              <div className="space-y-1">
+                <p className="text-emerald-300 font-extrabold text-sm sm:text-base uppercase tracking-wider">
+                  Prince Adewole Adebayo <span className="text-white font-normal">&</span> Dr. Usman Bugaje
+                </p>
+                <p className="text-slate-200 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                  A united, competent, and people-focused leadership for a prosperous Nigeria.
+                  Driven by <strong>Chapter II of the Nigerian Constitution</strong> — guaranteeing the security, welfare, and economic liberation of every citizen.
+                </p>
+              </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              {/* Action Buttons: Clean & Well-Spaced */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
                 <Link
                   href="/join"
-                  className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white font-extrabold px-7 py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 active:scale-95"
+                  className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white font-extrabold px-8 py-4 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 active:scale-95"
                 >
                   Join Movement
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/survey"
-                  className="w-full sm:w-auto bg-emerald-900/90 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-200 font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto bg-emerald-900/90 hover:bg-emerald-800 border border-emerald-500/40 text-emerald-100 font-bold px-7 py-4 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                 >
                   <HelpCircle className="w-4 h-4 text-orange-400" />
                   Take Citizen Survey
@@ -122,7 +134,7 @@ export default function CampaignHome() {
               </div>
 
               {/* Tagline Badges */}
-              <div className="pt-4 border-t border-emerald-800/60 flex items-center gap-4 sm:gap-6 text-xs tracking-wider uppercase font-bold text-emerald-300">
+              <div className="pt-4 border-t border-emerald-800/60 flex items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs tracking-wider uppercase font-bold text-emerald-300">
                 <div className="flex items-center gap-1.5">
                   <span className="text-orange-400">✓</span> Competence
                 </div>
@@ -135,25 +147,6 @@ export default function CampaignHome() {
               </div>
             </div>
 
-            {/* Right Candidate Cutout */}
-            <div className="lg:col-span-5 relative flex justify-center items-end">
-              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none h-[340px] sm:h-[460px] lg:h-[520px]">
-                <Image
-                  src="/images/candidate-hero.png"
-                  alt={candidateBio.fullName}
-                  fill
-                  priority
-                  className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)]"
-                />
-
-                <div className="absolute bottom-4 right-2 sm:right-6 bg-black/80 backdrop-blur-md border border-orange-500/50 px-4 py-2.5 rounded-2xl shadow-2xl">
-                  <p className="text-[10px] uppercase font-bold text-orange-400 tracking-wider">
-                    SDP Presidential Candidate
-                  </p>
-                  <p className="text-sm font-black text-white">{candidateBio.fullName}</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

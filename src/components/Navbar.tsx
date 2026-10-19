@@ -29,9 +29,9 @@ export default function Navbar() {
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
         
-        {/* Brand / Logo - Optimized for mobile scaling */}
-        <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <div className="relative h-8 w-16 sm:h-12 sm:w-24 flex items-center">
+        {/* Brand / Dual Logo: PAA + SDP Horse Logo */}
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
+          <div className="relative h-9 w-18 sm:h-12 sm:w-26 flex items-center">
             <Image
               src="/images/logo.png"
               alt="PAA Logo"
@@ -40,13 +40,15 @@ export default function Navbar() {
               className="object-contain"
             />
           </div>
-          <div className="flex flex-col border-l border-slate-200 pl-2">
-            <span className="font-extrabold text-[9px] sm:text-xs tracking-tight text-emerald-950 uppercase leading-tight">
-              Social Democratic Party
-            </span>
-            <span className="text-[7.5px] sm:text-[10px] text-orange-600 font-bold tracking-wider">
-              Progress • People • Prosperity
-            </span>
+          <div className="h-6 sm:h-8 w-px bg-slate-200 mx-0.5" />
+          <div className="relative h-8 w-11 sm:h-11 sm:w-14 flex items-center">
+            <Image
+              src="/images/sdp-horse-logo.png"
+              alt="SDP Horse Logo"
+              fill
+              priority
+              className="object-contain"
+            />
           </div>
         </Link>
 
