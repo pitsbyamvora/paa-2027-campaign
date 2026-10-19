@@ -74,10 +74,10 @@ export default function CampaignHome() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            
+
             {/* MOBILE: SHOW IMAGE FIRST (order-1 on mobile, order-2 on lg desktop) */}
             <div className="order-1 lg:order-2 lg:col-span-6 flex justify-center">
-              <div className="relative w-full max-w-lg lg:max-w-none rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-2 border-emerald-500/30 group">
+              <div className="relative w-full max-w-lg lg:max-w-none rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border-2 border-emerald-500/0 group">
                 <div className="relative aspect-[16/10] sm:aspect-[16/9.5] w-full">
                   <Image
                     src="/images/hero-campaign-banner.jpg"
@@ -92,7 +92,7 @@ export default function CampaignHome() {
 
             {/* WRITE-UPS & CTA BUTTONS (order-2 on mobile, order-1 on lg desktop) */}
             <div className="order-2 lg:order-1 lg:col-span-6 space-y-5 sm:space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-extrabold tracking-widest uppercase">
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
                 The New Nigeria Begins With Us
               </div>
@@ -100,7 +100,7 @@ export default function CampaignHome() {
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
                 The People’s <br />
                 <span className="text-white">Choice for </span>
-                <span className="text-orange-500 underline decoration-emerald-400 decoration-wavy decoration-2 underline-offset-8">
+                <span className="text-orange-500 ">
                   2027
                 </span>
               </h1>
@@ -251,15 +251,28 @@ export default function CampaignHome() {
         </div>
       </section>
 
-      {/* 4. SURVEY CALLOUT SECTION (NEW) */}
-      <section className="bg-gradient-to-r from-orange-600 to-orange-700 text-white py-14 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 4. SURVEY CALLOUT SECTION (WITH CUSTOM GEOMETRIC BANNER BG) */}
+      <section className="relative text-white py-14 sm:py-16 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Image
+            src="/images/survey-banner-bg.png"
+            alt="Survey background texture"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Subtle orange/darkening overlay so text remains razor-sharp & accessible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/90 via-orange-600/80 to-orange-700/85 mix-blend-multiply" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-3 text-center lg:text-left max-w-2xl">
-              <span className="text-orange-200 text-xs font-bold uppercase tracking-widest bg-black/20 px-3.5 py-1 rounded-full">
+              <span className="text-orange-200 text-xs font-bold uppercase tracking-widest bg-black/30 backdrop-blur-xs px-3.5 py-1 rounded-full border border-orange-300/30">
                 Your Voice Counts
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight">
+              <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-xs">
                 Your Voice is Important — Make It Heard!
               </h2>
               <p className="text-orange-100 text-xs sm:text-sm leading-relaxed">

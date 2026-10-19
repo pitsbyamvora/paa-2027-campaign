@@ -19,7 +19,8 @@ import {
   Calendar,
   MapPin,
   TrendingUp,
-  BarChart3
+  BarChart3,
+  Printer
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -40,7 +41,8 @@ export default function AdminDashboardPage() {
       setIsAuthenticated(true);
       fetchData();
     } else {
-      alert("Invalid campaign pass-key. Default pin is 2027");
+      alert("Access Denied: Invalid campaign security pass-key.");
+      setPasscode("");
     }
   };
 
@@ -160,7 +162,7 @@ export default function AdminDashboardPage() {
                 required
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                placeholder="Enter Access PIN (Default: 2027)"
+                placeholder="••••••••"
                 className="w-full px-4 py-3.5 rounded-xl bg-black/40 border border-emerald-600/60 text-white text-center font-bold tracking-widest text-lg focus:outline-none focus:border-orange-500"
               />
             </div>
@@ -197,17 +199,29 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.print();
+                }
+              }}
+              className="p-2 sm:px-3 sm:py-2 rounded-lg bg-orange-600 hover:bg-orange-500 text-xs font-bold text-white inline-flex items-center gap-1.5 transition-colors shadow-sm"
+              title="Print full report or save as PDF"
+            >
+              <Printer className="w-3.5 h-3.5" />
+              <span>Print All Data</span>
+            </button>
             <button
               onClick={fetchData}
-              className="p-2 rounded-lg bg-emerald-900/60 hover:bg-emerald-800 text-xs text-emerald-200 inline-flex items-center gap-1.5 transition-colors"
+              className="p-2 sm:px-3 sm:py-2 rounded-lg bg-emerald-900/60 hover:bg-emerald-800 text-xs text-emerald-200 inline-flex items-center gap-1.5 transition-colors"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
               <span className="hidden sm:inline">Refresh Data</span>
             </button>
             <button
               onClick={() => setIsAuthenticated(false)}
-              className="px-3 py-1.5 rounded-lg bg-red-600/20 text-red-300 hover:bg-red-600 hover:text-white text-xs font-bold transition-colors"
+              className="px-3 py-1.5 sm:py-2 rounded-lg bg-red-600/20 text-red-300 hover:bg-red-600 hover:text-white text-xs font-bold transition-colors"
             >
               Logout
             </button>

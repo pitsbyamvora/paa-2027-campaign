@@ -162,23 +162,34 @@ export default function MediaPage() {
                 })}
               </div>
 
-              {/* Official Channel Card */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-orange-600/20 to-emerald-950/50 border border-orange-500/30 text-xs text-slate-300 space-y-1.5 mt-2">
-                <div className="font-bold text-white flex items-center gap-1.5">
-                  <Tv className="w-4 h-4 text-orange-400" />
-                  Prince Adewole Adebayo Official Channel
+              {/* Official Channel Card & Watch More CTA */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-orange-600/25 via-emerald-950/80 to-emerald-950 border border-orange-500/40 text-xs text-slate-300 space-y-3 mt-3 shadow-xl">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-red-600 flex items-center justify-center text-white shrink-0 shadow-md">
+                    <YouTubeIcon className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-white text-xs sm:text-sm">
+                      Prince Adewole Adebayo Channel
+                    </h4>
+                    <p className="text-[10px] text-orange-400 font-semibold">Official YouTube Broadcasts</p>
+                  </div>
                 </div>
                 <p className="text-[11px] text-slate-300 leading-relaxed">
-                  Subscribe to get full broadcasts and rally recordings.
+                  Subscribe to watch full campaign rallies, complete policy debates, international press briefings, and documentary specials.
                 </p>
-                <a
-                  href="https://www.youtube.com/@PrinceAdewoleAdebayo"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-bold text-orange-400 hover:underline pt-1"
-                >
-                  Visit Official Channel <ArrowRight className="w-3 h-3" />
-                </a>
+                <div className="pt-1">
+                  <a
+                    href="https://www.youtube.com/@PrinceAdewoleAdebayo"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-extrabold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 active:scale-95"
+                  >
+                    <YouTubeIcon className="w-4 h-4" />
+                    <span>Watch More on YouTube</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
