@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "PAA 2027 Presidential Campaign",
     images: [
       {
-        url: "/images/og-share-card.jpg",
+        url: `${siteUrl}/images/og-share-card.jpg`, // <-- Added ${siteUrl}
         width: 1200,
         height: 675,
         type: "image/jpeg",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
       "Official 2027 Presidential Ticket: Prince (Dr.) Adewole Adebayo & Dr. Usman Bugaje. The New Nigeria Begins With Us.",
     site: "@Pres_Adebayo",
     creator: "@Pres_Adebayo",
-    images: ["/images/og-share-card.jpg"],
+    images: [`${siteUrl}/images/og-share-card.jpg`], // <-- Added ${siteUrl}
   },
   alternates: {
     canonical: "/",
