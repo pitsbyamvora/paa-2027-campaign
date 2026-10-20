@@ -112,7 +112,7 @@ export default function SurveyPage() {
     try {
       const { supabase } = await import("@/lib/supabase");
       if (supabase) {
-        await supabase.from("citizen_surveys").insert({
+        const { error } = await supabase.from("citizen_surveys").insert({
           email: formData.email,
           zone: formData.zone,
           age_range: formData.ageRange,
@@ -126,12 +126,22 @@ export default function SurveyPage() {
           support_likelihood: formData.supportLikelihood,
           newsletter_consent: formData.newsletterConsent
         });
+
+        if (error) {
+          console.error("Supabase survey insert error:", error);
+          alert(`Submission Notice: Could not save survey (${error.message}). Please check your connection and try again.`);
+          setIsSubmitting(false);
+          return;
+        }
+      } else {
+        console.warn("Supabase client not initialized. Check NEXT_PUBLIC_SUPABASE_URL.");
       }
-    } catch (err) {
-      console.warn("Supabase survey insert error (or offline):", err);
+      setSubmitted(true);
+    } catch (err: any) {
+      console.error("Survey submission exception:", err);
+      alert("Submission error: " + (err?.message || "Please try again."));
     } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
     }
   };
 
