@@ -92,10 +92,42 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "PoliticalParty",
+    "name": "Social Democratic Party (SDP) - Prince Adewole Adebayo 2027",
+    "alternateName": "PAA 2027 Presidential Campaign",
+    "url": "https://paa4president2027.com",
+    "logo": "https://paa4president2027.com/images/logo.png",
+    "image": "https://paa4president2027.com/images/og-share-card.jpg",
+    "description": "Official 2027 Presidential Campaign of Prince (Dr.) Adewole Adebayo and Dr. Usman Bugaje on the platform of the Social Democratic Party (SDP).",
+    "founder": {
+      "@type": "Person",
+      "name": "Prince Adewole Adebayo",
+      "jobTitle": "Presidential Candidate 2027",
+      "sameAs": [
+        "https://x.com/Pres_Adebayo",
+        "https://www.instagram.com/princeadewoleadebayo",
+        "https://www.facebook.com/PrinceAdewoleAdebayoOfficial",
+        "https://www.youtube.com/@PrinceAdewoleAdebayo"
+      ]
+    },
+    "sameAs": [
+      "https://x.com/Pres_Adebayo",
+      "https://www.instagram.com/princeadewoleadebayo",
+      "https://www.facebook.com/PrinceAdewoleAdebayoOfficial",
+      "https://www.youtube.com/@PrinceAdewoleAdebayo"
+    ]
+  };
+
   return (
     <html lang="en" className="h-full antialiased scroll-smooth">
       <head>
         <link rel="icon" href="/images/logo.png" type="image/png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
