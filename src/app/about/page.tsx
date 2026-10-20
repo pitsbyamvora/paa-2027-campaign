@@ -27,7 +27,7 @@ export default function AboutPage() {
       <section className="relative bg-[#041c14] text-white py-16 sm:py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-20 sm:opacity-30 mix-blend-luminosity">
           <Image
-            src="/images/candidate-bg.png"
+            src="/images/candidate-bg.webp"
             alt="Prince Adewole Adebayo"
             fill
             priority
@@ -58,7 +58,7 @@ export default function AboutPage() {
             {/* Candidate Image */}
             <div className="lg:col-span-5 relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden bg-gradient-to-tr from-slate-900 to-emerald-950 border border-slate-800 flex items-center justify-center">
               <Image
-                src="/images/candidate-hero.png"
+                src="/images/candidate-hero.webp"
                 alt="Prince Adebayo Portrait"
                 fill
                 className="object-contain object-bottom p-2 drop-shadow-2xl"

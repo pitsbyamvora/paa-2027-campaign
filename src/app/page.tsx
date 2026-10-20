@@ -256,7 +256,7 @@ export default function CampaignHome() {
         {/* Background Image */}
         <div className="absolute inset-0 pointer-events-none">
           <Image
-            src="/images/survey-banner-bg.png"
+            src="/images/survey-banner-bg.webp"
             alt="Survey background texture"
             fill
             className="object-cover object-center"

@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className="h-6 sm:h-8 w-px bg-slate-200 mx-0.5" />
           <div className="relative h-8 w-11 sm:h-11 sm:w-14 flex items-center">
             <Image
-              src="/images/sdp-horse-logo.png"
+              src="/images/sdp-horse-logo.webp"
               alt="SDP Horse Logo"
               fill
               priority

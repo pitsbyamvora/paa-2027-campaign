@@ -68,7 +68,7 @@ export default function JoinMovementPage() {
         {/* User's provided background banner image with dark overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-20 sm:opacity-25 mix-blend-luminosity">
           <Image
-            src="/images/candidate-bg.png"
+            src="/images/candidate-bg.webp"
             alt="Prince Adewole Adebayo Rally"
             fill
             priority

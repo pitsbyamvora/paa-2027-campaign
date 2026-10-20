@@ -29,7 +29,7 @@ export default function MediaPage() {
       <section className="relative bg-[#041c14] text-white py-10 sm:py-16 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-20 sm:opacity-25 mix-blend-luminosity">
           <Image
-            src="/images/candidate-bg.png"
+            src="/images/candidate-bg.webp"
             alt="Prince Adewole Adebayo"
             fill
             priority
