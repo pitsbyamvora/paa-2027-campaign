@@ -3,8 +3,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+const Ballot3DBackground = dynamic(
+  () => import("@/components/Ballot3DBackground"),
+  { ssr: false }
+);
 import {
   ArrowRight,
   TrendingUp,
@@ -66,6 +72,9 @@ export default function CampaignHome() {
   return (
     <div className="min-h-screen bg-[#fafcfb] text-slate-800 flex flex-col font-sans selection:bg-orange-500 selection:text-white">
       <Navbar />
+
+      {/* 3D SCROLL-DRIVEN POLLING BOOTH & BALLOT (Desktop Only, Pointer-events: none) */}
+      <Ballot3DBackground />
 
       {/* 1. HERO SECTION WITH OFFICIAL PRESIDENTIAL TICKET BANNER */}
       <section className="relative bg-[#041c14] text-white overflow-hidden py-8 sm:py-14 lg:py-18">
